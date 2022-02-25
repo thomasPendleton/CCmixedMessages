@@ -1,4 +1,7 @@
-const container = document.getElementById('quote')
+//Try to connect this app to an api to generate random quotes.
+
+const container = document.querySelector('.container')
+const quoteEl = document.getElementById('quote')
 const author = document.getElementById('author')
 const quotes = [
   {
@@ -18,8 +21,13 @@ const quotes = [
   },
 ]
 
-const randNumber = Math.floor(Math.random() * quotes.length)
-const quote = quotes[randNumber].quote
-const auth = quotes[randNumber].author
-container.innerHTML = `${quote}`
-author.innerHTML = `-${auth}`
+function generateNewQuote() {
+  const randNumber = Math.floor(Math.random() * quotes.length)
+  const quote = quotes[randNumber].quote
+  const auth = quotes[randNumber].author
+  quoteEl.innerHTML = `${quote}`
+  author.innerHTML = `-${auth}`
+}
+generateNewQuote()
+
+container.addEventListener('click', generateNewQuote)
